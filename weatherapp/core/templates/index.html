@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Application</title>
+    <style>
+        * {
+            margin: 0;
+            font-family: "Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+            box-sizing: border-box;
+        }
+        
+        #main {
+            text-align: center;
+            padding-top: 100px;
+        }
+        
+        input[type='text'] {
+            width: 30%;
+            padding: 10px;
+            border: 2px solid black;
+            margin-bottom: 5px;
+            margin-top: 20px;
+        }
+        
+        input[type='submit'] {
+            width: 30%;
+            padding: 10px;
+            border: 2px solid red;
+            margin-bottom: 5px;
+            background-color: black;
+            color: white;
+            cursor: pointer;
+            transform: uppercase;
+        }
+        
+        form {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <h1>
+            Find the weather
+        </h1>
+
+        <form action="" method="get">
+            <label for="city"></label>
+            <br><br>
+            <input type="text" name="city" value="{{request.GET.city}}" placeholder=" Enter City Name.......">
+            <br><br>
+            <input type="submit" value="Submit">
+        </form>
+        {%csrf_token%} {% if result %}
+        <h3>{{result.region}}</h3>
+        <h3>{{result.dayhour}}</h3>
+        <h3>{{result.weather_now}}</h3>
+        <h3>{{result.temp_now}}</h3>
+        {%endif%}
+    </div>
+</body>
+
+</html>
